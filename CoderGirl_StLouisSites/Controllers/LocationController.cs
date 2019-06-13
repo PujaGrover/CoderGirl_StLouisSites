@@ -23,7 +23,7 @@ namespace CoderGirl_StLouisSites.Controllers
         {
             //Displaying the list of locations here in Index View
             List<Location> locations = context.Locations.ToList();
-            return View();
+            return View();// returnn View(locations); Do we pass locations to the view?
         }
 
         [HttpGet]
