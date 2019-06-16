@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoderGirl_StLouisSites.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190606001839_AddLocationTable")]
-    partial class AddLocationTable
+    [Migration("20190615000724_AddLocationDescription")]
+    partial class AddLocationDescription
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,8 @@ namespace CoderGirl_StLouisSites.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
 
                     b.Property<string>("Name");
 
@@ -207,7 +209,6 @@ namespace CoderGirl_StLouisSites.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-https://www.khanacademy.org/sat?utm_source=practicepush2&utm_medium=cb418-ph&utm_campaign=practice           
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
