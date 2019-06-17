@@ -4,14 +4,16 @@ using CoderGirl_StLouisSites.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CoderGirl_StLouisSites.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190616184219_AddLocationRateAndReview")]
+    partial class AddLocationRateAndReview
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,13 +44,13 @@ namespace CoderGirl_StLouisSites.Data.Migrations
 
                     b.Property<int>("LocationId");
 
+                    b.Property<string>("LocationName");
+
                     b.Property<int>("Rating");
 
                     b.Property<string>("Review");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LocationId");
 
                     b.ToTable("LocationRateAndReview");
                 });
@@ -216,14 +218,6 @@ namespace CoderGirl_StLouisSites.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("CoderGirl_StLouisSites.Models.LocationRateAndReview", b =>
-                {
-                    b.HasOne("CoderGirl_StLouisSites.Models.Location", "Location")
-                        .WithMany("RateAndReviews")
-                        .HasForeignKey("LocationId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

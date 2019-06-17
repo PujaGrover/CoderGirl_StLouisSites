@@ -23,7 +23,7 @@ namespace CoderGirl_StLouisSites.Controllers
         {
             //Displaying the list of locations here in Index View
             List<Location> locations = context.Locations.ToList();
-            return View();// returnn View(locations); Do we pass locations to the view?
+            return View(locations);// return View(locations); Do we pass locations to the view?
         }
 
         [HttpGet]
@@ -36,8 +36,26 @@ namespace CoderGirl_StLouisSites.Controllers
         public IActionResult Create(Location location)
         {
             context.Add(location);
-            context.SaveChanges();//After adding SaveChanges puts the chnges in the Database
+            context.SaveChanges();//After adding SaveChanges puts the changes in the Database
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Details(int? Id)
+        {
+            if (Id == null)
+            {
+                return NotFound();
+            }
+            Location location = context.Locations.Find(Id);
+            //var locationRateAndReview = await context.LocationRateAndReview
+            //    .FirstOrDefaultAsync(m => m.Id == id);
+            //if (locationRateAndReview == null)
+            //{
+            //    return NotFound();
+            //}
+
+            //return View(locationRateAndReview);
+            return View(location);
         }
     }
 }
