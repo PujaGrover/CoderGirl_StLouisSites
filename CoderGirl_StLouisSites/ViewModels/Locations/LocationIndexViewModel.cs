@@ -28,12 +28,12 @@ namespace CoderGirl_StLouisSites.ViewModels
         //    get { return $"{LastName}, {FirstName}"; }
         //}
 
-        public LocationIndexViewModel(int Id, string Name, string Description, decimal AverageRating)
-        {
-            this.Id= Id;
-            this.Name = Name;
-            this.Description = Description;
-            this.AverageRating = context;
-        }
+        //public LocationIndexViewModel(int Id, string Name, string Description, decimal AverageRating)
+        //{
+        //    this.Id= Id;
+        //    this.Name = Name;
+        //    this.Description = Description;
+        //    this.AverageRating = context;
+        //}
     }
 }
