@@ -13,7 +13,7 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                @*<label asp-for="LocationId" class="control-label"></label>*@
+                <label hidden asp-for="LocationId" class="control-label"></label>
                 <input hidden asp-for="LocationId" class="form-control" />
                 <span asp-validation-for="LocationId" class="text-danger"></span>
             </div>
@@ -39,7 +39,8 @@
                 <span asp-validation-for="Review" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <button type="submit" value="Create" class="btn btn-primary">Save Rating And Review</button>
+                @*<input type="submit" value="Create" class="btn btn-primary" />*@
             </div>
         </form>
     </div>

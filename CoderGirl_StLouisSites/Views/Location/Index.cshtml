@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CoderGirl_StLouisSites.Models.Location>
+﻿@model IEnumerable<CoderGirl_StLouisSites.ViewModels.LocationIndexViewModel>
 
 @{
     ViewData["Title"] = "Locations";
@@ -21,9 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
-            @*<th>
+            <th>
                 @Html.DisplayNameFor(model => model.AverageRating)
-            </th>*@
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -41,13 +41,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
-            @* USE VIEW MODELS AS A BETTER ARCHITECTURE<td>
-            @Html.DisplayFor(modelItem => item.RateAndReviews.Where(r => r.Rating).ToList()  )
-        </td>*@
             <td>
-                @Html.ActionLink("Rate/Review", "Create", "LocationRateAndReview", new { locationId = item.Id }) |
-               @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @* USING VIEW MODELS FOR A BETTER ARCHITECTURE<td>
+        @Html.DisplayFor(modelItem => item.AverageRating)*@
+            </td>
+            <td>
+                @Html.ActionLink("Rate/Review", "Create", "LocationRateAndReview", new { locationId = item.Id })@* |
+                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", "Location", new { id=item.Id})*@
             </td>
         </tr>
 }

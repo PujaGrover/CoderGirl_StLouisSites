@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoderGirl_StLouisSites.Data;
 using CoderGirl_StLouisSites.Models;
+using CoderGirl_StLouisSites.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoderGirl_StLouisSites.Controllers
@@ -22,8 +23,9 @@ namespace CoderGirl_StLouisSites.Controllers
         public IActionResult Index()
         {
             //Displaying the list of locations here in Index View
-            List<Location> locations = context.Locations.ToList();
-            return View(locations);// return View(locations); Do we pass locations to the view?
+            //List<Location> locations = context.Locations.ToList();
+            List<LocationIndexViewModel> locations = LocationIndexViewModel.GetLocationListFromLocation(context);
+            return View(locations);
         }
 
         [HttpGet]
@@ -57,5 +59,15 @@ namespace CoderGirl_StLouisSites.Controllers
             //return View(locationRateAndReview);
             return View(location);
         }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            Location location = context.Locations.Find(id);
+            context.Locations.Remove(location);
+            context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
