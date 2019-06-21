@@ -56,28 +56,32 @@ namespace CoderGirl_StLouisSites.Controllers
         [HttpGet]
         public IActionResult Create(int locationId)
         {
-            Location location = context.Locations.Find(locationId);
-            LocationRateAndReview locationRateAndReview = new LocationRateAndReview();
-            locationRateAndReview.LocationId = locationId;
-            locationRateAndReview.Location = location;
+            //Location location = context.Locations.Find(locationId);
+            //LocationRateAndReview locationRateAndReview = new LocationRateAndReview();
+            //locationRateAndReview.LocationId = locationId;
+            //locationRateAndReview.Location = location;
 
             //CODE BELOW IS FOR VIEW MODELS - STILL NEEDS TO BE RESOLVED
-            //LocationRateAndReviewCreateViewModel locationRateAndReview
-            //    = LocationRateAndReviewCreateViewModel.GetLocationForRateAnReviewFromLocation(locationId);
+            LocationRateAndReviewCreateViewModel locationRateAndReview
+                = LocationRateAndReviewCreateViewModel.GetLocationForRateAnReviewFromLocation(locationId, context);
 
             return View(locationRateAndReview);
         }
 
         [HttpPost]
-        public IActionResult Create(LocationRateAndReview locationRateAndReview)
+        public IActionResult Create(LocationRateAndReviewCreateViewModel locationRateAndReview)
         {
             //Line of code beneath for debug purpose
             //Location location = context.Locations.Find(locationRateAndReview.LocationId);
-            //location.RateAndReviews.Add(locationRateAndReview);
 
-            context.Add(locationRateAndReview);
-            context.SaveChanges();
+            //locationRateAndReview.Location = location;
+
+            //context.Add(locationRateAndReview);
+            //context.SaveChanges();
+
+            locationRateAndReview.Persist(context);
             return RedirectToAction(nameof(Index));
+            //return RedirectToAction(controllerName: nameof(Location), actionName: nameof(Index));
         }
 
         //// POST: LocationRateAndReviews/Create

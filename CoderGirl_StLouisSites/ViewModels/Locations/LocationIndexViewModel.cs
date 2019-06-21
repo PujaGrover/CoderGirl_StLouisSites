@@ -44,7 +44,9 @@ namespace CoderGirl_StLouisSites.ViewModels
                 //    location.AverageRating = 0;
                 //}
                 //else
-                //location.AverageRating = Ratings.Average();
+                //location.AverageRating = Math.Round(Ratings.Average(x => x.Rating), 2);
+                //Math.Round(movie.Ratings.Average(x => x.Rating), 2);
+
 
                 locations.Add(location);
             }

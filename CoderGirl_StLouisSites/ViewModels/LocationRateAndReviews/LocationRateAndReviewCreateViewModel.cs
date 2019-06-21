@@ -1,5 +1,6 @@
 ﻿using CoderGirl_StLouisSites.Data;
 using CoderGirl_StLouisSites.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,31 +12,37 @@ namespace CoderGirl_StLouisSites.ViewModels.LocationRateAndReviews
     {
         //public int Id { get; set; }
         public int LocationId { get; set; }
-        public Location Location { get; set; }
+        public string LocationName { get; set; }
         public int Rating { get; set; }
         public string Review { get; set; }
 
-        private readonly ApplicationDbContext context;
 
-        public LocationRateAndReviewCreateViewModel(ApplicationDbContext context)
-        {
-            this.context = context;
-        }
 
-        public LocationRateAndReviewCreateViewModel GetLocationForRateAnReviewFromLocation(int locationId)
+        public static LocationRateAndReviewCreateViewModel GetLocationForRateAnReviewFromLocation(int locationId, ApplicationDbContext context)
         {
             Location location = context.Locations.Find(locationId);
-            LocationRateAndReview locationRateAndReview = new LocationRateAndReview();
-            locationRateAndReview.LocationId = locationId;
-            locationRateAndReview.Location = location;
 
-            return new LocationRateAndReviewCreateViewModel(context)
+            //LocationRateAndReview rateAndReview = context.RateAndReviews.Include(rr => rr.Location).SingleOrDefault();
+
+            return new LocationRateAndReviewCreateViewModel()
             {
-                LocationId = locationRateAndReview.LocationId,
-                Location = locationRateAndReview.Location,
-                Rating = locationRateAndReview.Rating,
-                Review = locationRateAndReview.Review
+                LocationId = locationId,
+                LocationName = location.Name,
             };
         }
+
+        public void Persist(ApplicationDbContext context)
+        {
+            LocationRateAndReview locationRateAndReview = new LocationRateAndReview()
+            {
+                LocationId = this.LocationId,
+                Rating = this.Rating,
+                Review = this.Review
+            };
+
+            context.Add(locationRateAndReview);
+            context.SaveChanges();
+        }
+        
     }
 }

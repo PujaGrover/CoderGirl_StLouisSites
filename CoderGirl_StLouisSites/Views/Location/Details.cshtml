@@ -1,4 +1,4 @@
-﻿@model CoderGirl_StLouisSites.Models.Location
+﻿@model CoderGirl_StLouisSites.ViewModels.Locations.LocationDetailsViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -22,17 +22,24 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
-        @*for debug purposes*@
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
+            @Html.DisplayNameFor(model => model.Rating)
+            Rating
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Id)
+            @Html.DisplayFor(model => model.Rating)
         </dd>
-        
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Review)
+            Rating
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Review)
+        </dd>
+
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-controller="LocationRateAndReview" asp-action="Create" asp-route-locationId="@Model.Id">Rate/Review</a> |
     <a asp-action="Index">Back to List</a>
 </div>

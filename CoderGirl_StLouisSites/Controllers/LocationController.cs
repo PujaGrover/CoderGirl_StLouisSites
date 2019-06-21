@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CoderGirl_StLouisSites.Data;
 using CoderGirl_StLouisSites.Models;
 using CoderGirl_StLouisSites.ViewModels;
+using CoderGirl_StLouisSites.ViewModels.Locations;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoderGirl_StLouisSites.Controllers
@@ -48,15 +49,9 @@ namespace CoderGirl_StLouisSites.Controllers
             {
                 return NotFound();
             }
-            Location location = context.Locations.Find(Id);
-            //var locationRateAndReview = await context.LocationRateAndReview
-            //    .FirstOrDefaultAsync(m => m.Id == id);
-            //if (locationRateAndReview == null)
-            //{
-            //    return NotFound();
-            //}
+            //Location location = context.Locations.Find(Id);
+            LocationDetailsViewModel location = LocationDetailsViewModel.GetLocationDetails(Id, context);
 
-            //return View(locationRateAndReview);
             return View(location);
         }
 
