@@ -65,18 +65,17 @@ namespace CoderGirl_StLouisSites.Controllers
             return View(new LocationEditViewModel(Id, context));
         }
 
-            //[HttpPost]
-            //public IActionResult Edit(int id, MovieEditViewModel movie)
-            //{
-            //    if (!ModelState.IsValid)
-            //    {
-            //        movie.ResetDirectorList(context);
-            //        return View(movie);
-            //    }
+        [HttpPost]
+        public IActionResult Edit(int Id, LocationEditViewModel locationEditViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(new LocationEditViewModel(Id, context));
+            }
 
-            //    movie.Persist(id, context);
-            //    return RedirectToAction(actionName: nameof(Index));
-            //}
+            locationEditViewModel.Persist(Id, context);
+            return RedirectToAction(actionName: nameof(Index));
+        }
 
         [HttpGet]
         public IActionResult Delete(int id)
