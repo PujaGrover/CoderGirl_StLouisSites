@@ -56,12 +56,13 @@ namespace CoderGirl_StLouisSites.Controllers
         [HttpGet]
         public IActionResult Create(int locationId)
         {
+            //CODE BELOW IS FOR MODELS
             //Location location = context.Locations.Find(locationId);
             //LocationRateAndReview locationRateAndReview = new LocationRateAndReview();
             //locationRateAndReview.LocationId = locationId;
             //locationRateAndReview.Location = location;
 
-            //CODE BELOW IS FOR VIEW MODELS - STILL NEEDS TO BE RESOLVED
+            //CODE BELOW IS FOR VIEW MODELS - RESOLVED
             LocationRateAndReviewCreateViewModel locationRateAndReview
                 = LocationRateAndReviewCreateViewModel.GetLocationForRateAnReviewFromLocation(locationId, context);
 
@@ -71,14 +72,11 @@ namespace CoderGirl_StLouisSites.Controllers
         [HttpPost]
         public IActionResult Create(LocationRateAndReviewCreateViewModel locationRateAndReview)
         {
-            //Line of code beneath for debug purpose
-            //Location location = context.Locations.Find(locationRateAndReview.LocationId);
-
-            //locationRateAndReview.Location = location;
-
+            //CODE BELOW IS FOR MODELS
             //context.Add(locationRateAndReview);
             //context.SaveChanges();
 
+            //CODE BELOW IS THROUGH VIEW MODELS
             locationRateAndReview.Persist(context);
             return RedirectToAction(nameof(Index));
             //return RedirectToAction(controllerName: nameof(Location), actionName: nameof(Index));

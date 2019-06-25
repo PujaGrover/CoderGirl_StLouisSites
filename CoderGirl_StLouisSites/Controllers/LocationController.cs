@@ -36,10 +36,14 @@ namespace CoderGirl_StLouisSites.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Location location)
+        public IActionResult Create(LocationCreateViewModel locationCreateViewModel)
         {
-            context.Add(location);
-            context.SaveChanges();//After adding SaveChanges puts the changes in the Database
+            //CODE BELOW IS WITH MODELS
+            //context.Add(location);
+            //context.SaveChanges();//After adding SaveChanges puts the changes in the Database
+
+            //CODE BELOW IS WITH VIEWMODELS
+            locationCreateViewModel.Persist(context);
             return RedirectToAction(nameof(Index));
         }
 
@@ -50,10 +54,29 @@ namespace CoderGirl_StLouisSites.Controllers
                 return NotFound();
             }
             //Location location = context.Locations.Find(Id);
-            LocationDetailsViewModel location = LocationDetailsViewModel.GetLocationDetails(Id, context);
+            LocationDetailsViewModel locationViewModel = LocationDetailsViewModel.GetLocationDetails(Id, context);
 
-            return View(location);
+            return View(locationViewModel);
         }
+
+        [HttpGet]
+        public IActionResult Edit(int Id)
+        {
+            return View(new LocationEditViewModel(Id, context));
+        }
+
+            //[HttpPost]
+            //public IActionResult Edit(int id, MovieEditViewModel movie)
+            //{
+            //    if (!ModelState.IsValid)
+            //    {
+            //        movie.ResetDirectorList(context);
+            //        return View(movie);
+            //    }
+
+            //    movie.Persist(id, context);
+            //    return RedirectToAction(actionName: nameof(Index));
+            //}
 
         [HttpGet]
         public IActionResult Delete(int id)

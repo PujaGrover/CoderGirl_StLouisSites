@@ -11,5 +11,9 @@ namespace CoderGirl_StLouisSites.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public List<LocationRateAndReview> RateAndReviews { get; set; }
+        public string StreetAddress { get; set; }
+        public string County { get; set; }
+        public int ZipCode { get; set; }
+        public string State { get; set; }
     }
 }

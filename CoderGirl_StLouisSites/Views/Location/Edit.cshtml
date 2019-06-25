@@ -1,0 +1,86 @@
+﻿@model CoderGirl_StLouisSites.ViewModels.Locations.LocationEditViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>LocationEditViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StreetAddress" class="control-label"></label>
+                <input asp-for="StreetAddress" class="form-control" />
+                <span asp-validation-for="StreetAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="County" class="control-label"></label>
+                <select asp-for="County">
+                    <option>St. Louis</option>
+                    <option>St. Charles</option>
+                    <option>Franklin</option>
+                    <option>St. Francois</option>
+                    <option>Jefferson</option>
+                    <option>Linoln</option>
+                    <option>Warren</option>
+                    <option>Gasconade</option>
+                    <option>Crawford</option>
+                    <option>Washington</option>
+                    <option>Phelps</option>
+                    <option>Ste. Genevieve</option>
+                    <option>Iron</option>
+                    <option>Pike</option>
+                    <option>Reynolds</option>
+                    <option>Madison</option>
+                    <option>St. Clair</option>
+                    <option>Monroe</option>
+                    <option>Macoupin</option>
+                    <option>Bond</option>
+                    <option>Jersey</option>
+                    <option>Calhoun</option>
+                    <option>Clinton</option>
+                    <option>Sullivan</option>
+                    <option>Marion</option>
+                    <option>Fayette</option>
+                </select>
+                <span asp-validation-for="County" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode" class="control-label"></label>
+                <input asp-for="ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

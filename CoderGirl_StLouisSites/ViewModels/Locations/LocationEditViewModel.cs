@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace CoderGirl_StLouisSites.ViewModels.Locations
 {
-    public class LocationCreateViewModel
+    public class LocationEditViewModel
     {
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
-        [Range(2,200, ErrorMessage = "Please limit description between 2 to 200 charachters")]
+        [Range(2, 200, ErrorMessage = "Please limit description between 2 to 200 charachters")]
         public string Description { get; set; }
         public string StreetAddress { get; set; }
         [Required]
@@ -22,10 +22,22 @@ namespace CoderGirl_StLouisSites.ViewModels.Locations
         public int ZipCode { get; set; }
         public string State { get; set; }
 
-        public void Persist(ApplicationDbContext context)
+        public LocationEditViewModel(int Id, ApplicationDbContext context)
+        {
+            Location location = context.Locations.Find(Id);
+            Name = location.Name;
+            Description = location.Description;
+            StreetAddress = location.StreetAddress;
+            County = location.County;
+            ZipCode = location.ZipCode;
+            State = location.State;
+        }
+
+        public void Persist(int Id, ApplicationDbContext context)
         {
             Location location = new Location()
             {
+                Id = Id,
                 Name = this.Name,
                 Description = this.Description,
                 StreetAddress = this.StreetAddress,
@@ -33,7 +45,7 @@ namespace CoderGirl_StLouisSites.ViewModels.Locations
                 ZipCode = this.ZipCode,
                 State = this.State
             };
-            context.Add(location);
+            context.Update(location);
             context.SaveChanges();
         }
     }

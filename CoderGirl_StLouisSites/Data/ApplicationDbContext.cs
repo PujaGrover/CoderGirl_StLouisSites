@@ -4,6 +4,7 @@ using System.Text;
 using CoderGirl_StLouisSites.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using CoderGirl_StLouisSites.ViewModels.Locations;
 
 namespace CoderGirl_StLouisSites.Data
 {
@@ -18,5 +19,9 @@ namespace CoderGirl_StLouisSites.Data
         }
 
         public DbSet<CoderGirl_StLouisSites.Models.LocationRateAndReview> LocationRateAndReview { get; set; }
+
+        public DbSet<CoderGirl_StLouisSites.ViewModels.Locations.LocationCreateViewModel> LocationCreateViewModel { get; set; }
+
+        public DbSet<CoderGirl_StLouisSites.ViewModels.Locations.LocationEditViewModel> LocationEditViewModel { get; set; }
     }
 }

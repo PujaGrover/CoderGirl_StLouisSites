@@ -4,10 +4,16 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1  class="text-center text-info">Details Of Location</h1>
 
 <div>
-    <h4>Location</h4>
+    @*<h4 class="text-center text-dark">Location</h4*@
+    <div>
+        @* @Html.ActionLink("Rate/Review", "Create", "LocationRateAndReview", new { locationId = Model.Id }) |*@
+        <a asp-controller="LocationRateAndReview" asp-action="Create" asp-route-locationId="@Model.Id">Rate/Review</a> |
+        @*<a asp-controller="Location" asp-action="Edit" asp-route-locationId="@Model.Id">Edit Location</a> |*@
+        <a asp-action="Index">Back to List</a>
+    </div>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -23,23 +29,61 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Rating)
-            Rating
+            @Html.DisplayNameFor(model => model.StreetAddress)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Rating)
+            @Html.DisplayFor(model => model.StreetAddress)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Review)
-            Rating
+            @Html.DisplayNameFor(model => model.County)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Review)
+            @Html.DisplayFor(model => model.County)
         </dd>
-
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ratings)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var item in Model.Ratings)
+            {
+                <dl>
+                    <dd>
+                        @item
+                    </dd>
+                    <hr />
+                </dl>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Reviews)
+        </dt>
+        <dd class="col-sm-10">
+            @foreach (var item in Model.Reviews)
+            {
+                <dl>
+                    <dd>
+                        @item
+                    </dd>
+                    <hr />
+                </dl>
+            }
+        </dd>
     </dl>
 </div>
-<div>
-    <a asp-controller="LocationRateAndReview" asp-action="Create" asp-route-locationId="@Model.Id">Rate/Review</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+   
+
+
+
