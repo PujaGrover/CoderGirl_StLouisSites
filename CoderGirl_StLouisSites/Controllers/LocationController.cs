@@ -43,6 +43,11 @@ namespace CoderGirl_StLouisSites.Controllers
             //context.SaveChanges();//After adding SaveChanges puts the changes in the Database
 
             //CODE BELOW IS WITH VIEWMODELS
+            if (!ModelState.IsValid)
+            {
+                return View(locationCreateViewModel);
+            }
+
             locationCreateViewModel.Persist(context);
             return RedirectToAction(nameof(Index));
         }
