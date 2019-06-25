@@ -13,7 +13,7 @@ namespace CoderGirl_StLouisSites.ViewModels.Locations
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        [Required(ErrorMessage = "Please give the description between 2 to 200 characters")][MinLength(2)[MaxLength(200)]
+        [Required(ErrorMessage = "Please give the description between 2 to 200 characters")][MinLength(2)][MaxLength(200)]
         public string Description { get; set; }
         public string StreetAddress { get; set; }
         [Required]

@@ -21,6 +21,8 @@ namespace CoderGirl_StLouisSites.ViewModels.Locations
         public int ZipCode { get; set; }
         public string State { get; set; }
 
+        public LocationEditViewModel() { }
+
         public LocationEditViewModel(int Id, ApplicationDbContext context)
         {
             Location location = context.Locations.Find(Id);
