@@ -19,7 +19,7 @@ namespace CoderGirl_StLouisSites.ViewModels.Locations
         [Required]
         public string County { get; set; }
         [Required(ErrorMessage = "Zip Code is required")]
-        //[RegularExpression(@"^\d{5}(-\d{4})?$", ErrorMessage = "Invalid Zip")]
+        [RegularExpression(@"^\d{5}(-\d{4})?$", ErrorMessage = "Invalid Zip")]
         public string ZipCode { get; set; }
         public string State { get; set; }
 
