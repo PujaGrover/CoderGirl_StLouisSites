@@ -14,11 +14,12 @@ namespace CoderGirl_StLouisSites.ViewModels.Locations
         public string Description { get; set; }
         public string StreetAddress { get; set; }
         public string County { get; set; }
-        public int ZipCode { get; set; }
+        public string ZipCode { get; set; }
         public string State { get; set; }
         // public List<LocationRateAndReview> RateAndReviews { get; set; }
         public List<int> Ratings { get; set; }
         public List<string> Reviews { get; set; }
+        //public string ImageURL { get; set; }
 
         public static LocationDetailsViewModel GetLocationDetails(int? Id, ApplicationDbContext context)
         {
@@ -30,7 +31,7 @@ namespace CoderGirl_StLouisSites.ViewModels.Locations
             Location location = context.Locations.Find(Id);
             List<LocationRateAndReview> locationRateAndReviews = new List<LocationRateAndReview>();
 //locationRateAndReview.LocationId = location.Id;
-            locationRateAndReviews = context.LocationRateAndReview.Where(rr => rr.LocationId == Id).ToList();
+            locationRateAndReviews = context.RateAndReviews.Where(rr => rr.LocationId == Id).ToList();
             //OR
             //List<Models.LocationRateAndReview> rateAndReviews = location.RateAndReviews;
             List<int> ratings = new List<int>();

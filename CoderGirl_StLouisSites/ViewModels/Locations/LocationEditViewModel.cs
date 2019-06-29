@@ -13,12 +13,14 @@ namespace CoderGirl_StLouisSites.ViewModels.Locations
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        [Required(ErrorMessage = "Please give the description between 2 to 200 characters")][MinLength(2)][MaxLength(200)]
+        [Required(ErrorMessage = "Please give description between 2 to 200 characters")][MinLength(2)][StringLength(200)]
         public string Description { get; set; }
         public string StreetAddress { get; set; }
         [Required]
         public string County { get; set; }
-        public int ZipCode { get; set; }
+        [Required(ErrorMessage = "Zip Code is required")]
+        //[RegularExpression(@"^\d{5}(-\d{4})?$", ErrorMessage = "Invalid Zip")]
+        public string ZipCode { get; set; }
         public string State { get; set; }
 
         public LocationEditViewModel() { }

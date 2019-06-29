@@ -50,7 +50,7 @@ namespace CoderGirl_StLouisSites.ViewModels
                 //CODE BELOW IS TO GET THE LIST OF RATINGS FOR THE SPECIFIC LOCATION Id
                 List<LocationRateAndReview> locationRateAndReviews = new List<LocationRateAndReview>();
                 
-                locationRateAndReviews = context.LocationRateAndReview.Where(rr => rr.LocationId == location.Id).ToList();
+                locationRateAndReviews = context.RateAndReviews.Where(rr => rr.LocationId == location.Id).ToList();
          
                 List<int> ratings = new List<int>();
 

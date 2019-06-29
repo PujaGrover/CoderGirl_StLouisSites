@@ -14,6 +14,12 @@
         @*<a asp-controller="Location" asp-action="Edit" asp-route-locationId="@Model.Id">Edit Location</a> |*@
         <a asp-action="Index">Back to List</a>
     </div>
+    @*Add-Migration to add image object to the Database, Update-Database
+        <section class="LocationImage">
+            <img src="@Model.ImageURL" class="align-self-center visible "/>
+            <p class="text-center text-info">City Of St.Louis</p>
+        </section>
+    *@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">

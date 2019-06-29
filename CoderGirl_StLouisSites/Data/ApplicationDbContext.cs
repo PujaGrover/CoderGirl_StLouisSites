@@ -18,10 +18,5 @@ namespace CoderGirl_StLouisSites.Data
         {
         }
 
-        public DbSet<CoderGirl_StLouisSites.Models.LocationRateAndReview> LocationRateAndReview { get; set; }
-
-        public DbSet<CoderGirl_StLouisSites.ViewModels.Locations.LocationCreateViewModel> LocationCreateViewModel { get; set; }
-
-        public DbSet<CoderGirl_StLouisSites.ViewModels.Locations.LocationEditViewModel> LocationEditViewModel { get; set; }
     }
 }
